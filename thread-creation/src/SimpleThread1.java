@@ -1,0 +1,24 @@
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class SimpleThread1 {
+    public static void main(String[] args) throws InterruptedException {
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //Code that will run in  a new thread
+                System.out.println("we are now in thread "+Thread.currentThread().getName());
+                System.out.println("Current thread priority is " + Thread.currentThread().getPriority());
+            }
+        });
+
+        thread.setName("New Worker Thread");
+
+        thread.setPriority(Thread.MAX_PRIORITY);
+
+        System.out.println("We are in thread: " + Thread.currentThread().getName()+ " before starting a new thread");
+        thread.start();
+        //Thread.sleep(1000);// Main thread will sleep
+        System.out.println("We are in thread: " + Thread.currentThread().getName()+ " after starting a new thread");
+    }
+}
